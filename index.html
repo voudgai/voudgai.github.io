@@ -6,9 +6,7 @@
     <meta name="description" content="Dobrodošli u Drugu Dimenziju, restoran koji nudi najfiniji izbor jela uključujući predjela, glavna jela i deserte u Kragujevcu.">
     <meta name="keywords" content="Druga Dimenzija, restoran, Kragujevac, hrana, glavna jela, predjela, deserti">
 
-    
-    .flip_H{ transform: scale(-1, 1); }
-    .flip_V{ transform: scale(1, -1); }
+
     
     <title>Druga dimenzija</title>
     <style>
@@ -280,6 +278,8 @@
         .contact-info p {
             margin: 0;
         }
+        .flip_H{ transform: scale(-1, 1); }
+        .flip_V{ transform: scale(1, -1); }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
@@ -289,8 +289,8 @@
         <header class="header">
             <div class="logo">
                 <img src="./images/logo.jpg" alt="Druga Dimenzija Logo" />
-                DRUGA<br><span class='flip_V'>DIMENZIJA;</span>
             </div>
+            DRUGA<br><span class='flip_V'>DIMENZIJA;</span>
             <button class="menu-toggle" aria-label="Toggle menu">☰</button>
             <nav class="nav-menu" aria-label="Glavna Navigacija">
                 <button data-filter="all" aria-label="Prikaži sva jela">Sve</button>
