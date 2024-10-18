@@ -87,15 +87,6 @@
             color: white;
         }
 
-        .food-card {
-            max-width: 30vw;
-            position: relative;
-            background: #1e1e1e;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 15px rgba(139, 59, 139, 0.2);
-        }
 
         /* Mobile-specific adjustments */
         @media (max-width: 768px) {
@@ -134,8 +125,11 @@
                 width: 100%;
                 text-align: left;
             }
-            .food-card {
-            display: grid;
+        }
+        
+        
+        .food-card {
+            max-width: 30vw;
             position: relative;
             background: #1e1e1e;
             border-radius: 8px;
@@ -143,6 +137,17 @@
             transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 0 4px 15px rgba(139, 59, 139, 0.2);
         }
+
+        @media (max-width: 768px) {
+            .food-card {
+            max-width: 100%;
+            position: relative;
+            background: #1e1e1e;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(139, 59, 139, 0.2);
+            }
         }
 
         .menu-section {
