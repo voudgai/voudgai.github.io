@@ -322,13 +322,13 @@
                 });
             });
 
-            const map = L.map('map').setView([44.0142, 20.9116], 15);
+            const map = L.map('map').setView([44.011699327201484, 20.910778985057316], 15);
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
 
-            L.marker([44.0142, 20.9116]).addTo(map)
+            L.marker([44.011699327201484, 20.910778985057316]).addTo(map)
                 .bindPopup('Druga Dimenzija<br>Kragujevac, Serbia.')
                 .openPopup();
         });
