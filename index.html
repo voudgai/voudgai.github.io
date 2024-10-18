@@ -220,7 +220,7 @@
         </nav>
 
         <div class="menu-section">
-            <h2 class="category-title">Featured Dishes</h2>
+            <h2 class="category-title" id="category-title">Featured Dishes</h2>
             <div class="menu-grid" id="menu-grid">
                 <div class="food-card" data-category="main">
                     <div class="shine"></div>
@@ -285,6 +285,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             const buttons = document.querySelectorAll('.nav-menu button');
             const foodCards = document.querySelectorAll('.food-card');
+            const categoryTitle = document.getElementById('category-title');
 
             buttons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -297,6 +298,27 @@
                             card.style.display = 'none';
                         }
                     });
+
+                    // Update category title based on the selected filter
+                    if (filter === 'all') {
+                        categoryTitle.textContent = 'All Dishes';
+                    } else if (filter === 'main') {
+                        categoryTitle.textContent = 'Main Dishes';
+                    } else if (filter === 'appetizers') {
+                        categoryTitle.textContent = 'Appetizers';
+                    } else if (filter === 'drinks') {
+                        categoryTitle.textContent = 'Drinks';
+                    } else if (filter === 'desserts') {
+                        categoryTitle.textContent = 'Desserts';
+                    }
+
+                    // Check how many items are visible
+                    const visibleCards = Array.from(foodCards).filter(card => card.style.display !== 'none');
+                    if (visibleCards.length === 1) {
+                        visibleCards[0].style.gridColumn = '1 / -1'; // Make the single item take full width
+                    } else {
+                        visibleCards.forEach(card => card.style.gridColumn = 'auto'); // Reset to normal grid behavior
+                    }
                 });
             });
 
