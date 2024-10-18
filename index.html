@@ -12,7 +12,6 @@
             --secondary-color: #4a154a;
             --background-color: #121212;
             --text-color: #ffffff;
-            --header-background: #1e1e1e; /* New variable for header background */
         }
 
         body {
@@ -29,7 +28,7 @@
             padding: 1rem;
         }
 
-        /* Updated Header Styles */
+        /* Centered and Sticky Logo with Menu */
         .header {
             display: flex;
             justify-content: space-between;
@@ -37,9 +36,8 @@
             padding: 1rem 0;
             position: sticky;
             top: 0;
-            background: var(--header-background);
+            background: var(--background-color);
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .logo {
@@ -240,8 +238,7 @@
             border-radius: 8px;
             border: 2px solid var(--primary-color);
         }
-
-        /* New styles for Contact section */
+                /* Updated styles for Contact section */
         .contact-section {
             background: var(--header-background);
             padding: 2rem;
@@ -249,18 +246,15 @@
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(139, 59, 139, 0.2);
         }
-
         .contact-section h2 {
             color: var(--primary-color);
             margin-bottom: 1rem;
         }
-
         .contact-info {
             display: flex;
             flex-direction: column;
             gap: 1rem;
         }
-
         .contact-info p {
             margin: 0;
         }
@@ -282,14 +276,56 @@
                 <button data-filter="appetizers" aria-label="Prikaži predjela">Predjela</button>
                 <button data-filter="drinks" aria-label="Prikaži pića">Pića</button>
                 <button data-filter="desserts" aria-label="Prikaži deserte">Deserti</button>
-                <button data-filter="contact" aria-label="Prikaži kontakt informacije">Kontakt</button>
             </nav>
         </header>
 
         <div class="menu-section">
             <h2 class="category-title" id="category-title">Istaknuta jela</h2>
             <div class="menu-grid" id="menu-grid">
-                <!-- Food cards here (unchanged) -->
+                <div class="food-card" data-category="main">
+                    <div class="shine"></div>
+                    <img src="./images/Image2.jpg" alt="Hrskava poslastica - Pohovana specijalitet sa svežom salatom i pikantnim začinima" class="food-image">
+                    <h3 class="food-title">Hrskava poslastica</h3>
+                    <p class="food-description">Opis...</p>
+                    <span class="food-price">1200 RSD</span>
+                    <button class="order-button" aria-label="Naruči Hrskavu poslasticu">Naruči odmah</button>
+                </div>
+
+                <div class="food-card" data-category="main">
+                    <div class="shine"></div>
+                    <img src="./images/Image3.jpg" alt="Raj od sira - Pohovane šnicle od sira sa tartar sosom" class="food-image">
+                    <h3 class="food-title">Raj od sira</h3>
+                    <p class="food-description">Opis...</p>
+                    <span class="food-price">990 RSD</span>
+                    <button class="order-button" aria-label="Naruči Raj od sira">Naruči odmah</button>
+                </div>
+
+                <div class="food-card" data-category="appetizers">
+                    <div class="shine"></div>
+                    <img src="./images/Image4.jpg" alt="Susam hrskavica - Delikatesi u susamu sa potpisom soseva" class="food-image">
+                    <h3 class="food-title">Susam hrskavica</h3>
+                    <p class="food-description">Opis...</p>
+                    <span class="food-price">1100 RSD</span>
+                    <button class="order-button" aria-label="Naruči Susam hrskavicu">Naruči odmah</button>
+                </div>
+
+                <div class="food-card" data-category="main">
+                    <div class="shine"></div>
+                    <img src="./images/Image5.jpg" alt="Roštilj specijalitet - Mešano meso sa sezonskim povrćem" class="food-image">
+                    <h3 class="food-title">Roštilj specijalitet</h3>
+                    <p class="food-description">Opis...</p>
+                    <span class="food-price">1500 RSD</span>
+                    <button class="order-button" aria-label="Naruči Roštilj specijalitet">Naruči odmah</button>
+                </div>
+
+                <div class="food-card" data-category="drinks">
+                    <div class="shine"></div>
+                    <img src="./images/Image6.jpg" alt="Sveža limunada - Savršeno osveženje uz svaki obrok" class="food-image">
+                    <h3 class="food-title">Sveža limunada</h3>
+                    <p class="food-description">Opis...</p>
+                    <span class="food-price">300 RSD</span>
+                    <button class="order-button" aria-label="Naruči Svežu limunadu">Naruči odmah</button>
+                </div>
             </div>
         </div>
 
@@ -311,8 +347,6 @@
             const categoryTitle = document.getElementById('category-title');
             const menuToggle = document.querySelector('.menu-toggle');
             const navMenu = document.querySelector('.nav-menu');
-            const contactSection = document.getElementById('contact-section');
-            const menuSection = document.querySelector('.menu-section');
 
             menuToggle.addEventListener('click', () => {
                 navMenu.classList.toggle('active');
@@ -322,40 +356,31 @@
                 button.addEventListener('click', () => {
                     const filter = button.getAttribute('data-filter');
 
-                    if (filter === 'contact') {
-                        menuSection.style.display = 'none';
-                        contactSection.style.display = 'block';
-                        categoryTitle.textContent = 'Kontakt';
-                    } else {
-                        menuSection.style.display = 'block';
-                        contactSection.style.display = 'none';
-
-                        foodCards.forEach(card => {
-                            if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                                card.style.display = 'block';
-                            } else {
-                                card.style.display = 'none';
-                            }
-                        });
-
-                        if (filter === 'all') {
-                            categoryTitle.textContent = 'Sva jela';
-                        } else if (filter === 'main') {
-                            categoryTitle.textContent = 'Glavna jela';
-                        } else if (filter === 'appetizers') {
-                            categoryTitle.textContent = 'Predjela';
-                        } else if (filter === 'drinks') {
-                            categoryTitle.textContent = 'Pića';
-                        } else if (filter === 'desserts') {
-                            categoryTitle.textContent = 'Deserti';
-                        }
-
-                        const visibleCards = Array.from(foodCards).filter(card => card.style.display !== 'none');
-                        if (visibleCards.length === 1) {
-                            visibleCards[0].style.gridColumn = '1 / -1';
+                    foodCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
                         } else {
-                            visibleCards.forEach(card => card.style.gridColumn = 'auto');
+                            card.style.display = 'none';
                         }
+                    });
+
+                    if (filter === 'all') {
+                        categoryTitle.textContent = 'Sva jela';
+                    } else if (filter === 'main') {
+                        categoryTitle.textContent = 'Glavna jela';
+                    } else if (filter === 'appetizers') {
+                        categoryTitle.textContent = 'Predjela';
+                    } else if (filter === 'drinks') {
+                        categoryTitle.textContent = 'Pića';
+                    } else if (filter === 'desserts') {
+                        categoryTitle.textContent = 'Deserti';
+                    }
+
+                    const visibleCards = Array.from(foodCards).filter(card => card.style.display !== 'none');
+                    if (visibleCards.length === 1) {
+                        visibleCards[0].style.gridColumn = '1 / -1';
+                    } else {
+                        visibleCards.forEach(card => card.style.gridColumn = 'auto');
                     }
 
                     if (window.innerWidth <= 768) {
