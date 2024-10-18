@@ -28,19 +28,37 @@
             padding: 1rem;
         }
 
+        /* Centered and Sticky Logo */
         .logo {
             display: flex;
+            justify-content: center;
             align-items: center;
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: bold;
             color: var(--primary-color);
-            margin-bottom: 2rem;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            background: var(--background-color);
+            z-index: 100;
         }
 
         .logo img {
-            height: 60px;
+            height: 80px;
             margin-right: 1rem;
             border-radius: 50%;
+        }
+
+        /* Mobile-specific adjustments */
+        @media (max-width: 600px) {
+            .logo {
+                padding: 0.5rem 0;
+                font-size: 1.8rem;
+            }
+
+            .logo img {
+                height: 50px;
+            }
         }
 
         .nav-menu {
@@ -233,9 +251,9 @@
 
                 <div class="food-card" data-category="main">
                     <div class="shine"></div>
-                    <img src="./images/Image5.jpg" alt="Grilled Special - Grilled meat with vegetables and flatbread" class="food-image">
+                    <img src="./images/Image5.jpg" alt="Grilled Special - Mixed grill with seasonal vegetables" class="food-image">
                     <h3 class="food-title">Grilled Special</h3>
-                    <p class="food-description">Perfectly grilled meat served with fresh vegetables and flatbread</p>
+                    <p class="food-description">Mixed grill served with seasonal vegetables and our special sauce</p>
                     <span class="food-price">1500 RSD</span>
                     <button class="order-button" aria-label="Order Grilled Special">Order Now</button>
                 </div>
@@ -261,13 +279,11 @@
         </div>
 
         <div id="map"></div>
-
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const buttons = document.querySelectorAll('.nav-menu button');
-            const menuGrid = document.getElementById('menu-grid');
             const foodCards = document.querySelectorAll('.food-card');
 
             buttons.forEach(button => {
