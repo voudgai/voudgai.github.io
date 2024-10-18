@@ -2,18 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to Druga Dimenzija, a restaurant offering the finest selection of dishes including appetizers, main courses, and desserts in Kragujevac.">
+    <meta name="keywords" content="Druga Dimenzija, restaurant, Kragujevac, food, main dishes, appetizers, desserts">
     <title>Druga Dimenzija</title>
     <style>
         :root {
             --primary-color: #8b3b8b;
             --secondary-color: #4a154a;
+            --background-color: #121212;
+            --text-color: #ffffff;
         }
 
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #121212;
-            color: white;
+            background: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
         }
 
         .container {
@@ -34,6 +40,7 @@
         .logo img {
             height: 60px;
             margin-right: 1rem;
+            border-radius: 50%;
         }
 
         .nav-menu {
@@ -53,6 +60,7 @@
             padding: 0.5rem 1rem;
             transition: all 0.3s;
             border-radius: 4px;
+            min-width: 120px;
         }
 
         .nav-menu button:hover {
@@ -82,7 +90,7 @@
             background: #1e1e1e;
             border-radius: 8px;
             overflow: hidden;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 0 4px 15px rgba(139, 59, 139, 0.2);
         }
 
@@ -113,6 +121,12 @@
             }
             to {
                 left: 200%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .shine {
+                display: none; /* Disable shine effect on mobile for performance */
             }
         }
 
@@ -179,70 +193,107 @@
             Druga Dimenzija
         </div>
 
-        <div class="nav-menu">
-            <button>All</button>
-            <button>Main Dishes</button>
-            <button>Appetizers</button>
-            <button>Drinks</button>
-            <button>Desserts</button>
-        </div>
+        <nav class="nav-menu" aria-label="Main Navigation">
+            <button data-filter="all" aria-label="Show all dishes">All</button>
+            <button data-filter="main" aria-label="Show main dishes">Main Dishes</button>
+            <button data-filter="appetizers" aria-label="Show appetizers">Appetizers</button>
+            <button data-filter="drinks" aria-label="Show drinks">Drinks</button>
+            <button data-filter="desserts" aria-label="Show desserts">Desserts</button>
+        </nav>
 
         <div class="menu-section">
             <h2 class="category-title">Featured Dishes</h2>
-            <div class="menu-grid">
-                <div class="food-card">
+            <div class="menu-grid" id="menu-grid">
+                <div class="food-card" data-category="main">
                     <div class="shine"></div>
-                    <img src="./images/Image2.jpg" alt="Breaded Specialty" class="food-image">
+                    <img src="./images/Image2.jpg" alt="Crispy Delight - Breaded specialty with fresh salad and spicy seasoning" class="food-image">
                     <h3 class="food-title">Crispy Delight</h3>
                     <p class="food-description">Golden-crusted specialty served with fresh salad and spicy seasoning</p>
                     <span class="food-price">1200 RSD</span>
-                    <button class="order-button">Order Now</button>
+                    <button class="order-button" aria-label="Order Crispy Delight">Order Now</button>
                 </div>
 
-                <div class="food-card">
+                <div class="food-card" data-category="main">
                     <div class="shine"></div>
-                    <img src="./images/Image3.jpg" alt="Cheese Cutlet" class="food-image">
+                    <img src="./images/Image3.jpg" alt="Cheese Paradise - Breaded cheese cutlets with tartar sauce" class="food-image">
                     <h3 class="food-title">Cheese Paradise</h3>
                     <p class="food-description">Breaded cheese cutlets served with tartar sauce and fresh salad</p>
                     <span class="food-price">990 RSD</span>
-                    <button class="order-button">Order Now</button>
+                    <button class="order-button" aria-label="Order Cheese Paradise">Order Now</button>
                 </div>
 
-                <div class="food-card">
+                <div class="food-card" data-category="appetizers">
                     <div class="shine"></div>
-                    <img src="./images/Image4.jpg" alt="Sesame Crusted Specialty" class="food-image">
+                    <img src="./images/Image4.jpg" alt="Sesame Crunch - Sesame-crusted delicacy with signature sauces" class="food-image">
                     <h3 class="food-title">Sesame Crunch</h3>
                     <p class="food-description">Sesame-crusted delicacy served with two signature sauces</p>
                     <span class="food-price">1100 RSD</span>
-                    <button class="order-button">Order Now</button>
+                    <button class="order-button" aria-label="Order Sesame Crunch">Order Now</button>
                 </div>
 
-                <div class="food-card">
+                <div class="food-card" data-category="main">
                     <div class="shine"></div>
-                    <img src="./images/Image5.jpg" alt="Grilled Special" class="food-image">
+                    <img src="./images/Image5.jpg" alt="Grilled Special - Grilled meat with vegetables and flatbread" class="food-image">
                     <h3 class="food-title">Grilled Special</h3>
                     <p class="food-description">Perfectly grilled meat served with fresh vegetables and flatbread</p>
-                    <span class="food-price">1300 RSD</span>
-                    <button class="order-button">Order Now</button>
+                    <span class="food-price">1500 RSD</span>
+                    <button class="order-button" aria-label="Order Grilled Special">Order Now</button>
+                </div>
+
+                <div class="food-card" data-category="drinks">
+                    <div class="shine"></div>
+                    <img src="./images/Image6.jpg" alt="Fresh Lemonade - A perfect refreshment for any meal" class="food-image">
+                    <h3 class="food-title">Fresh Lemonade</h3>
+                    <p class="food-description">A perfect refreshment for any meal</p>
+                    <span class="food-price">300 RSD</span>
+                    <button class="order-button" aria-label="Order Fresh Lemonade">Order Now</button>
+                </div>
+
+                <div class="food-card" data-category="desserts">
+                    <div class="shine"></div>
+                    <img src="./images/Image7.jpg" alt="Chocolate Fantasy - Creamy and decadent chocolate dessert" class="food-image">
+                    <h3 class="food-title">Chocolate Fantasy</h3>
+                    <p class="food-description">Creamy, decadent chocolate dessert to satisfy your cravings</p>
+                    <span class="food-price">650 RSD</span>
+                    <button class="order-button" aria-label="Order Chocolate Fantasy">Order Now</button>
                 </div>
             </div>
         </div>
 
         <div id="map"></div>
+
     </div>
 
     <script>
-        // Initialize map centered on Druga Dimenzija location
-        const map = L.map('map').setView([44.0128, 20.9114], 15);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-        
-        // Add marker for restaurant location
-        L.marker([44.0128, 20.9114])
-            .addTo(map)
-            .bindPopup('<strong>Druga Dimenzija</strong><br>Kneza Miloša 16<br>Kragujevac, Serbia')
-            .openPopup();
+        document.addEventListener('DOMContentLoaded', function () {
+            const buttons = document.querySelectorAll('.nav-menu button');
+            const menuGrid = document.getElementById('menu-grid');
+            const foodCards = document.querySelectorAll('.food-card');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filter = button.getAttribute('data-filter');
+
+                    foodCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            const map = L.map('map').setView([44.0142, 20.9116], 15);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            L.marker([44.0142, 20.9116]).addTo(map)
+                .bindPopup('Druga Dimenzija<br>Kragujevac, Serbia.')
+                .openPopup();
+        });
     </script>
 </body>
 </html>
