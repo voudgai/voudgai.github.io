@@ -40,20 +40,24 @@
             display: flex;
             gap: 2rem;
             margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .nav-menu button {
             background: none;
-            border: none;
+            border: 2px solid var(--primary-color);
             color: white;
             cursor: pointer;
             font-size: 1.1rem;
             padding: 0.5rem 1rem;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            border-radius: 4px;
         }
 
         .nav-menu button:hover {
-            color: var(--primary-color);
+            background: var(--primary-color);
+            color: white;
         }
 
         .menu-section {
@@ -64,6 +68,7 @@
             color: var(--primary-color);
             font-size: 2rem;
             margin-bottom: 2rem;
+            text-align: center;
         }
 
         .menu-grid {
@@ -78,10 +83,12 @@
             border-radius: 8px;
             overflow: hidden;
             transition: transform 0.3s;
+            box-shadow: 0 4px 15px rgba(139, 59, 139, 0.2);
         }
 
         .food-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(139, 59, 139, 0.4);
         }
 
         .shine {
@@ -97,6 +104,7 @@
                 rgba(255, 255, 255, 0) 100%
             );
             animation: shine 3s infinite;
+            pointer-events: none;
         }
 
         @keyframes shine {
@@ -120,12 +128,20 @@
             color: var(--primary-color);
         }
 
+        .food-description {
+            padding: 0 1rem;
+            margin: 0;
+            color: #888;
+            font-size: 0.9rem;
+            min-height: 40px;
+        }
+
         .food-price {
             display: block;
-            padding: 0 1rem;
+            padding: 0.5rem 1rem;
             color: white;
             font-weight: bold;
-            margin-bottom: 1rem;
+            font-size: 1.2rem;
         }
 
         .order-button {
@@ -139,6 +155,7 @@
             color: white;
             cursor: pointer;
             transition: background-color 0.3s;
+            font-weight: bold;
         }
 
         .order-button:hover {
@@ -149,6 +166,7 @@
             height: 400px;
             margin-top: 2rem;
             border-radius: 8px;
+            border: 2px solid var(--primary-color);
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -157,31 +175,56 @@
 <body>
     <div class="container">
         <div class="logo">
-            <img src="/api/placeholder/60/60" alt="Druga Dimenzija Logo" />
+            <img src="./images/logo.jpg" alt="Druga Dimenzija Logo" />
             Druga Dimenzija
         </div>
 
         <div class="nav-menu">
             <button>All</button>
-            <button>Burgers</button>
-            <button>Kebabs</button>
-            <button>Fries</button>
+            <button>Main Dishes</button>
+            <button>Appetizers</button>
             <button>Drinks</button>
             <button>Desserts</button>
         </div>
 
         <div class="menu-section">
-            <h2 class="category-title">Our Specialties</h2>
+            <h2 class="category-title">Featured Dishes</h2>
             <div class="menu-grid">
-                <!-- Menu items would go here using your images -->
                 <div class="food-card">
                     <div class="shine"></div>
-                    <img src="/api/placeholder/280/200" alt="Specialty Dish" class="food-image">
+                    <img src="./images/Image2.jpg" alt="Breaded Specialty" class="food-image">
                     <h3 class="food-title">Crispy Delight</h3>
-                    <span class="food-price">$14.99</span>
+                    <p class="food-description">Golden-crusted specialty served with fresh salad and spicy seasoning</p>
+                    <span class="food-price">1200 RSD</span>
                     <button class="order-button">Order Now</button>
                 </div>
-                <!-- More menu items... -->
+
+                <div class="food-card">
+                    <div class="shine"></div>
+                    <img src="./images/Image3.jpg" alt="Cheese Cutlet" class="food-image">
+                    <h3 class="food-title">Cheese Paradise</h3>
+                    <p class="food-description">Breaded cheese cutlets served with tartar sauce and fresh salad</p>
+                    <span class="food-price">990 RSD</span>
+                    <button class="order-button">Order Now</button>
+                </div>
+
+                <div class="food-card">
+                    <div class="shine"></div>
+                    <img src="./images/Image4.jpg" alt="Sesame Crusted Specialty" class="food-image">
+                    <h3 class="food-title">Sesame Crunch</h3>
+                    <p class="food-description">Sesame-crusted delicacy served with two signature sauces</p>
+                    <span class="food-price">1100 RSD</span>
+                    <button class="order-button">Order Now</button>
+                </div>
+
+                <div class="food-card">
+                    <div class="shine"></div>
+                    <img src="./images/Image5.jpg" alt="Grilled Special" class="food-image">
+                    <h3 class="food-title">Grilled Special</h3>
+                    <p class="food-description">Perfectly grilled meat served with fresh vegetables and flatbread</p>
+                    <span class="food-price">1300 RSD</span>
+                    <button class="order-button">Order Now</button>
+                </div>
             </div>
         </div>
 
@@ -198,7 +241,7 @@
         // Add marker for restaurant location
         L.marker([44.0128, 20.9114])
             .addTo(map)
-            .bindPopup('Druga Dimenzija<br>Kneza Miloša 16<br>Kragujevac, Serbia')
+            .bindPopup('<strong>Druga Dimenzija</strong><br>Kneza Miloša 16<br>Kragujevac, Serbia')
             .openPopup();
     </script>
 </body>
