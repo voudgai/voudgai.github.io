@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Welcome to Druga Dimenzija, a restaurant offering the finest selection of dishes including appetizers, main courses, and desserts in Kragujevac.">
-    <meta name="keywords" content="Druga Dimenzija, restaurant, Kragujevac, food, main dishes, appetizers, desserts">
+    <meta name="description" content="Dobrodošli u Drugu Dimenziju, restoran koji nudi najfiniji izbor jela uključujući predjela, glavna jela i deserte u Kragujevcu.">
+    <meta name="keywords" content="Druga Dimenzija, restoran, Kragujevac, hrana, glavna jela, predjela, deserti">
     <title>Druga Dimenzija</title>
     <style>
         :root {
@@ -28,19 +28,24 @@
             padding: 1rem;
         }
 
-        /* Centered and Sticky Logo */
-        .logo {
+        /* Centered and Sticky Logo with Menu */
+        .header {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
             padding: 1rem 0;
             position: sticky;
             top: 0;
             background: var(--background-color);
             z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
         }
 
         .logo img {
@@ -49,24 +54,19 @@
             border-radius: 50%;
         }
 
-        /* Mobile-specific adjustments */
-        @media (max-width: 600px) {
-            .logo {
-                padding: 0.5rem 0;
-                font-size: 1.8rem;
-            }
-
-            .logo img {
-                height: 50px;
-            }
+        /* Sticky Menu */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         .nav-menu {
             display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
+            gap: 1rem;
         }
 
         .nav-menu button {
@@ -74,16 +74,54 @@
             border: 2px solid var(--primary-color);
             color: white;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1rem;
             padding: 0.5rem 1rem;
             transition: all 0.3s;
             border-radius: 4px;
-            min-width: 120px;
         }
 
         .nav-menu button:hover {
             background: var(--primary-color);
             color: white;
+        }
+
+        /* Mobile-specific adjustments */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .logo img {
+                height: 50px;
+            }
+
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                padding: 1rem 0;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu button {
+                width: 100%;
+                text-align: left;
+            }
         }
 
         .menu-section {
@@ -144,7 +182,7 @@
 
         @media (max-width: 600px) {
             .shine {
-                display: none; /* Disable shine effect on mobile for performance */
+                display: none;
             }
         }
 
@@ -206,67 +244,68 @@
 </head>
 <body>
     <div class="container">
-        <div class="logo">
-            <img src="./images/logo.jpg" alt="Druga Dimenzija Logo" />
-            Druga Dimenzija1
-        </div>
-
-        <nav class="nav-menu" aria-label="Main Navigation">
-            <button data-filter="all" aria-label="Show all dishes">All</button>
-            <button data-filter="main" aria-label="Show main dishes">Main Dishes</button>
-            <button data-filter="appetizers" aria-label="Show appetizers">Appetizers</button>
-            <button data-filter="drinks" aria-label="Show drinks">Drinks</button>
-            <button data-filter="desserts" aria-label="Show desserts">Desserts</button>
-        </nav>
+        <header class="header">
+            <div class="logo">
+                <img src="./images/logo.jpg" alt="Druga Dimenzija Logo" />
+                Druga Dimenzija
+            </div>
+            <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+            <nav class="nav-menu" aria-label="Glavna Navigacija">
+                <button data-filter="all" aria-label="Prikaži sva jela">Sve</button>
+                <button data-filter="main" aria-label="Prikaži glavna jela">Glavna jela</button>
+                <button data-filter="appetizers" aria-label="Prikaži predjela">Predjela</button>
+                <button data-filter="drinks" aria-label="Prikaži pića">Pića</button>
+                <button data-filter="desserts" aria-label="Prikaži deserte">Deserti</button>
+            </nav>
+        </header>
 
         <div class="menu-section">
-            <h2 class="category-title" id="category-title">Featured Dishes</h2>
+            <h2 class="category-title" id="category-title">Istaknuta jela</h2>
             <div class="menu-grid" id="menu-grid">
                 <div class="food-card" data-category="main">
                     <div class="shine"></div>
-                    <img src="./images/Image2.jpg" alt="Crispy Delight - Breaded specialty with fresh salad and spicy seasoning" class="food-image">
-                    <h3 class="food-title">Crispy Delight</h3>
-                    <p class="food-description">Golden-crusted specialty served with fresh salad and spicy seasoning</p>
+                    <img src="./images/Image2.jpg" alt="Hrskava poslastica - Pohovana specijalitet sa svežom salatom i pikantnim začinima" class="food-image">
+                    <h3 class="food-title">Hrskava poslastica</h3>
+                    <p class="food-description">Opis...</p>
                     <span class="food-price">1200 RSD</span>
-                    <button class="order-button" aria-label="Order Crispy Delight">Order Now</button>
+                    <button class="order-button" aria-label="Naruči Hrskavu poslasticu">Naruči odmah</button>
                 </div>
 
                 <div class="food-card" data-category="main">
                     <div class="shine"></div>
-                    <img src="./images/Image3.jpg" alt="Cheese Paradise - Breaded cheese cutlets with tartar sauce" class="food-image">
-                    <h3 class="food-title">Cheese Paradise</h3>
-                    <p class="food-description">Breaded cheese cutlets served with tartar sauce and fresh salad</p>
+                    <img src="./images/Image3.jpg" alt="Raj od sira - Pohovane šnicle od sira sa tartar sosom" class="food-image">
+                    <h3 class="food-title">Raj od sira</h3>
+                    <p class="food-description">Opis...</p>
                     <span class="food-price">990 RSD</span>
-                    <button class="order-button" aria-label="Order Cheese Paradise">Order Now</button>
+                    <button class="order-button" aria-label="Naruči Raj od sira">Naruči odmah</button>
                 </div>
 
                 <div class="food-card" data-category="appetizers">
                     <div class="shine"></div>
-                    <img src="./images/Image4.jpg" alt="Sesame Crunch - Sesame-crusted delicacy with signature sauces" class="food-image">
-                    <h3 class="food-title">Sesame Crunch</h3>
-                    <p class="food-description">Sesame-crusted delicacy served with two signature sauces</p>
+                    <img src="./images/Image4.jpg" alt="Susam hrskavica - Delikatesi u susamu sa potpisom soseva" class="food-image">
+                    <h3 class="food-title">Susam hrskavica</h3>
+                    <p class="food-description">Opis...</p>
                     <span class="food-price">1100 RSD</span>
-                    <button class="order-button" aria-label="Order Sesame Crunch">Order Now</button>
+                    <button class="order-button" aria-label="Naruči Susam hrskavicu">Naruči odmah</button>
                 </div>
 
                 <div class="food-card" data-category="main">
                     <div class="shine"></div>
-                    <img src="./images/Image5.jpg" alt="Grilled Special - Mixed grill with seasonal vegetables" class="food-image">
-                    <h3 class="food-title">Grilled Special</h3>
-                    <p class="food-description">Mixed grill served with seasonal vegetables and our special sauce</p>
+                    <img src="./images/Image5.jpg" alt="Roštilj specijalitet - Mešano meso sa sezonskim povrćem" class="food-image">
+                    <h3 class="food-title">Roštilj specijalitet</h3>
+                    <p class="food-description">Opis...</p>
                     <span class="food-price">1500 RSD</span>
-                    <button class="order-button" aria-label="Order Grilled Special">Order Now</button>
+                    <button class="order-button" aria-label="Naruči Roštilj specijalitet">Naruči odmah</button>
                 </div>
 
                 <div class="food-card" data-category="drinks">
                     <div class="shine"></div>
-                    <img src="./images/Image6.jpg" alt="Fresh Lemonade - A perfect refreshment for any meal" class="food-image">
-                    <h3 class="food-title">Fresh Lemonade</h3>
-                    <p class="food-description">A perfect refreshment for any meal</p>
+                    <img src="./images/Image6.jpg" alt="Sveža limunada - Savršeno osveženje uz svaki obrok" class="food-image">
+                    <h3 class="food-title">Sveža limunada</h3>
+                    <p class="food-description">Opis...</p>
                     <span class="food-price">300 RSD</span>
-                    <button class="order-button" aria-label="Order Fresh Lemonade">Order Now</button>
+                    <button class="order-button" aria-label="Naruči Svežu limunadu">Naruči odmah</button>
                 </div>
-
             </div>
         </div>
 
@@ -278,6 +317,12 @@
             const buttons = document.querySelectorAll('.nav-menu button');
             const foodCards = document.querySelectorAll('.food-card');
             const categoryTitle = document.getElementById('category-title');
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
 
             buttons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -291,25 +336,27 @@
                         }
                     });
 
-                    // Update category title based on the selected filter
                     if (filter === 'all') {
-                        categoryTitle.textContent = 'All Dishes';
+                        categoryTitle.textContent = 'Sva jela';
                     } else if (filter === 'main') {
-                        categoryTitle.textContent = 'Main Dishes';
+                        categoryTitle.textContent = 'Glavna jela';
                     } else if (filter === 'appetizers') {
-                        categoryTitle.textContent = 'Appetizers';
+                        categoryTitle.textContent = 'Predjela';
                     } else if (filter === 'drinks') {
-                        categoryTitle.textContent = 'Drinks';
+                        categoryTitle.textContent = 'Pića';
                     } else if (filter === 'desserts') {
-                        categoryTitle.textContent = 'Desserts';
+                        categoryTitle.textContent = 'Deserti';
                     }
 
-                    // Check how many items are visible
                     const visibleCards = Array.from(foodCards).filter(card => card.style.display !== 'none');
                     if (visibleCards.length === 1) {
-                        visibleCards[0].style.gridColumn = '1 / -1'; // Make the single item take full width
+                        visibleCards[0].style.gridColumn = '1 / -1';
                     } else {
-                        visibleCards.forEach(card => card.style.gridColumn = 'auto'); // Reset to normal grid behavior
+                        visibleCards.forEach(card => card.style.gridColumn = 'auto');
+                    }
+
+                    if (window.innerWidth <= 768) {
+                        navMenu.classList.remove('active');
                     }
                 });
             });
@@ -321,7 +368,7 @@
             }).addTo(map);
 
             L.marker([44.011699327201484, 20.910778985057316]).addTo(map)
-                .bindPopup('Druga Dimenzija<br>Kragujevac, Serbia.')
+                .bindPopup('Druga Dimenzija<br>Kragujevac, Srbija.')
                 .openPopup();
         });
     </script>
