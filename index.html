@@ -2,141 +2,110 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Druga Dimenzija</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
-
         :root {
-            --primary: #1a1a1a;
-            --secondary: #2d2d2d;
-            --accent: #ff4d4d;
-            --text: #ffffff;
-            --card-bg: #2d2d2d;
-            --hover: #ff6b6b;
+            --primary-color: #8b3b8b;
+            --secondary-color: #4a154a;
         }
 
         body {
-            background: var(--primary);
-            color: var(--text);
-            min-height: 100vh;
-            line-height: 1.6;
-        }
-
-        header {
-            background: var(--secondary);
-            padding: 1.5rem 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #121212;
+            color: white;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 1rem;
         }
 
         .logo {
-            font-size: 2.5rem;
-            font-weight: bold;
-            text-align: center;
-            color: var(--text);
-            margin-bottom: 0.5rem;
-        }
-
-        .sublogo {
-            text-align: center;
-            color: var(--accent);
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-        }
-
-        .nav-container {
-            background: var(--secondary);
-            padding: 1rem 0;
-            margin-top: 2rem;
-            border-radius: 10px;
-        }
-
-        .category-nav {
             display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
         }
 
-        .category-btn {
-            background: transparent;
-            border: 2px solid var(--accent);
-            color: var(--text);
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
+        .logo img {
+            height: 60px;
+            margin-right: 1rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .nav-menu button {
+            background: none;
+            border: none;
+            color: white;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s;
         }
 
-        .category-btn:hover {
-            background: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        .category-btn.active {
-            background: var(--accent);
-            box-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
+        .nav-menu button:hover {
+            color: var(--primary-color);
         }
 
         .menu-section {
-            padding: 2rem 0;
+            margin-bottom: 4rem;
         }
 
         .category-title {
+            color: var(--primary-color);
             font-size: 2rem;
-            margin: 2rem 0;
-            color: var(--accent);
-            position: relative;
-            padding-left: 1rem;
-        }
-
-        .category-title::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 70%;
-            background: var(--accent);
-            border-radius: 2px;
+            margin-bottom: 2rem;
         }
 
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            padding: 1rem 0;
         }
 
         .food-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
             position: relative;
+            background: #1e1e1e;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
         }
 
         .food-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .shine {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.3) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            from {
+                left: -100%;
+            }
+            to {
+                left: 200%;
+            }
         }
 
         .food-image {
@@ -145,205 +114,92 @@
             object-fit: cover;
         }
 
-        .food-content {
-            padding: 1.5rem;
-        }
-
         .food-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--text);
-        }
-
-        .food-description {
-            color: #b0b0b0;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            min-height: 2.7rem;
-        }
-
-        .food-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 1rem;
+            padding: 1rem;
+            margin: 0;
+            color: var(--primary-color);
         }
 
         .food-price {
-            font-size: 1.4rem;
-            color: var(--accent);
-            font-weight: bold;
-        }
-
-        .order-btn {
-            background: var(--accent);
+            display: block;
+            padding: 0 1rem;
             color: white;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .order-button {
+            display: block;
+            width: calc(100% - 2rem);
+            margin: 1rem;
+            padding: 0.8rem;
+            background: var(--primary-color);
             border: none;
-            padding: 0.7rem 1.5rem;
-            border-radius: 25px;
+            border-radius: 4px;
+            color: white;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
+            transition: background-color 0.3s;
         }
 
-        .order-btn:hover {
-            background: var(--hover);
-            transform: scale(1.05);
+        .order-button:hover {
+            background: var(--secondary-color);
         }
 
-        .hidden {
-            display: none !important;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 1rem;
-            }
-            
-            .menu-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .category-nav {
-                padding: 0.5rem;
-            }
-
-            .category-btn {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.9rem;
-            }
-        }
-
-        .food-card {
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        #map {
+            height: 400px;
+            margin-top: 2rem;
+            border-radius: 8px;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">Druga Dimenzija</div>
-            <div class="sublogo">FAST FOOD & GRILL</div>
-        </div>
-    </header>
-
     <div class="container">
-        <div class="nav-container">
-            <nav class="category-nav">
-                <button class="category-btn active" data-category="all">All</button>
-                <button class="category-btn" data-category="burgers">Beef Burgers</button>
-                <button class="category-btn" data-category="chicken">Chicken</button>
-                <button class="category-btn" data-category="kebab">Kebab</button>
-                <button class="category-btn" data-category="sides">Sides</button>
-                <button class="category-btn" data-category="drinks">Drinks</button>
-            </nav>
+        <div class="logo">
+            <img src="/api/placeholder/60/60" alt="Druga Dimenzija Logo" />
+            Druga Dimenzija
         </div>
 
-        <section class="menu-section">
-            <div id="burgers" class="menu-category">
-                <h2 class="category-title">Beef Burgers</h2>
-                <div class="menu-grid">
-                    <div class="food-card" data-category="burgers">
-                        <img src="/api/placeholder/300/200" alt="Classic Burger" class="food-image">
-                        <div class="food-content">
-                            <h3 class="food-title">Classic Beef Burger</h3>
-                            <p class="food-description">100% beef patty, fresh lettuce, tomato, onion, and our special sauce</p>
-                            <div class="food-footer">
-                                <span class="food-price">5.99 €</span>
-                                <button class="order-btn">Order Now</button>
-                            </div>
-                        </div>
-                    </div>
+        <div class="nav-menu">
+            <button>All</button>
+            <button>Burgers</button>
+            <button>Kebabs</button>
+            <button>Fries</button>
+            <button>Drinks</button>
+            <button>Desserts</button>
+        </div>
 
-                    <div class="food-card" data-category="burgers">
-                        <img src="/api/placeholder/300/200" alt="Cheese Burger" class="food-image">
-                        <div class="food-content">
-                            <h3 class="food-title">Double Cheeseburger</h3>
-                            <p class="food-description">Two beef patties, double cheese, bacon, caramelized onions</p>
-                            <div class="food-footer">
-                                <span class="food-price">7.99 €</span>
-                                <button class="order-btn">Order Now</button>
-                            </div>
-                        </div>
-                    </div>
+        <div class="menu-section">
+            <h2 class="category-title">Our Specialties</h2>
+            <div class="menu-grid">
+                <!-- Menu items would go here using your images -->
+                <div class="food-card">
+                    <div class="shine"></div>
+                    <img src="/api/placeholder/280/200" alt="Specialty Dish" class="food-image">
+                    <h3 class="food-title">Crispy Delight</h3>
+                    <span class="food-price">$14.99</span>
+                    <button class="order-button">Order Now</button>
                 </div>
+                <!-- More menu items... -->
             </div>
+        </div>
 
-            <div id="kebab" class="menu-category">
-                <h2 class="category-title">Kebab</h2>
-                <div class="menu-grid">
-                    <div class="food-card" data-category="kebab">
-                        <img src="/api/placeholder/300/200" alt="Doner Kebab" class="food-image">
-                        <div class="food-content">
-                            <h3 class="food-title">Döner Kebab</h3>
-                            <p class="food-description">Fresh pita bread, seasoned meat, vegetables, and garlic sauce</p>
-                            <div class="food-footer">
-                                <span class="food-price">6.99 €</span>
-                                <button class="order-btn">Order Now</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="sides" class="menu-category">
-                <h2 class="category-title">Sides</h2>
-                <div class="menu-grid">
-                    <div class="food-card" data-category="sides">
-                        <img src="/api/placeholder/300/200" alt="French Fries" class="food-image">
-                        <div class="food-content">
-                            <h3 class="food-title">French Fries</h3>
-                            <p class="food-description">Crispy golden fries with your choice of seasoning</p>
-                            <div class="food-footer">
-                                <span class="food-price">2.99 €</span>
-                                <button class="order-btn">Order Now</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div id="map"></div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const categoryButtons = document.querySelectorAll('.category-btn');
-            const menuCategories = document.querySelectorAll('.menu-category');
-
-            function filterItems(category) {
-                menuCategories.forEach(menuCategory => {
-                    if (category === 'all') {
-                        menuCategory.classList.remove('hidden');
-                    } else if (!menuCategory.querySelector(`[data-category="${category}"]`)) {
-                        menuCategory.classList.add('hidden');
-                    } else {
-                        menuCategory.classList.remove('hidden');
-                    }
-                });
-            }
-
-            categoryButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    categoryButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    const category = button.getAttribute('data-category');
-                    filterItems(category);
-                });
-            });
-
-            filterItems('all');
-        });
+        // Initialize map centered on Druga Dimenzija location
+        const map = L.map('map').setView([44.0128, 20.9114], 15);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+        
+        // Add marker for restaurant location
+        L.marker([44.0128, 20.9114])
+            .addTo(map)
+            .bindPopup('Druga Dimenzija<br>Kneza Miloša 16<br>Kragujevac, Serbia')
+            .openPopup();
     </script>
 </body>
 </html>
