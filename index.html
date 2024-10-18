@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FutureFood Express</title>
+    <title>Druga Dimenzija</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
@@ -14,121 +14,159 @@
         }
 
         :root {
-            --primary: #2e1760;
-            --secondary: #4c2a85;
-            --accent: #ff6b6b;
-            --background: #1a1a2e;
-            --card: rgba(255, 255, 255, 0.05);
+            --primary: #1a1a1a;
+            --secondary: #2d2d2d;
+            --accent: #ff4d4d;
+            --text: #ffffff;
+            --card-bg: #2d2d2d;
+            --hover: #ff6b6b;
         }
 
         body {
-            background: var(--background);
-            color: white;
+            background: var(--primary);
+            color: var(--text);
             min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+            line-height: 1.6;
         }
 
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            padding: 1rem 0;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            background: var(--secondary);
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
         .logo {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: bold;
             text-align: center;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .sublogo {
+            text-align: center;
+            color: var(--accent);
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+        }
+
+        .nav-container {
+            background: var(--secondary);
+            padding: 1rem 0;
+            margin-top: 2rem;
+            border-radius: 10px;
         }
 
         .category-nav {
             display: flex;
+            justify-content: center;
             gap: 1rem;
-            overflow-x: auto;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            margin: 2rem 0;
-            border-radius: 15px;
-            scrollbar-width: none;
-        }
-
-        .category-nav::-webkit-scrollbar {
-            display: none;
+            flex-wrap: wrap;
         }
 
         .category-btn {
-            background: var(--card);
-            border: none;
-            color: white;
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--text);
             padding: 0.8rem 1.5rem;
             border-radius: 25px;
             cursor: pointer;
-            white-space: nowrap;
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .category-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
         }
 
         .category-btn.active {
             background: var(--accent);
-            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
         }
 
         .menu-section {
+            padding: 2rem 0;
+        }
+
+        .category-title {
+            font-size: 2rem;
             margin: 2rem 0;
+            color: var(--accent);
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .category-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 70%;
+            background: var(--accent);
+            border-radius: 2px;
         }
 
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
-            padding: 1rem;
+            padding: 1rem 0;
         }
 
         .food-card {
-            background: var(--card);
-            border-radius: 20px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
+            background: var(--card-bg);
+            border-radius: 15px;
             overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         .food-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            border-color: var(--accent);
         }
 
         .food-image {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-radius: 15px;
-            margin-bottom: 1rem;
+        }
+
+        .food-content {
+            padding: 1.5rem;
         }
 
         .food-title {
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
-            color: #fff;
+            color: var(--text);
         }
 
         .food-description {
-            color: rgba(255, 255, 255, 0.7);
+            color: #b0b0b0;
             font-size: 0.9rem;
             margin-bottom: 1rem;
+            min-height: 2.7rem;
+        }
+
+        .food-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
         }
 
         .food-price {
@@ -137,66 +175,57 @@
             font-weight: bold;
         }
 
-        .category-title {
-            font-size: 2rem;
-            margin: 2rem 0;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
-        }
-
         .order-btn {
             background: var(--accent);
             color: white;
             border: none;
-            padding: 0.5rem 1rem;
+            padding: 0.7rem 1.5rem;
             border-radius: 25px;
             cursor: pointer;
-            position: absolute;
-            right: 1.5rem;
-            bottom: 1.5rem;
             transition: all 0.3s ease;
+            font-weight: 500;
         }
 
         .order-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
+            background: var(--hover);
+            transform: scale(1.05);
+        }
+
+        .hidden {
+            display: none !important;
         }
 
         @media (max-width: 768px) {
             .container {
-                padding: 1rem;
+                padding: 0 1rem;
             }
             
             .menu-grid {
                 grid-template-columns: 1fr;
             }
+
+            .category-nav {
+                padding: 0.5rem;
+            }
+
+            .category-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
         }
 
-        .shine {
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(
-                to right,
-                rgba(255, 255, 255, 0) 0%,
-                rgba(255, 255, 255, 0.1) 50%,
-                rgba(255, 255, 255, 0) 100%
-            );
-            transform: skewX(-25deg);
-            animation: shine 3s infinite;
+        .food-card {
+            animation: fadeIn 0.5s ease-in-out;
         }
 
-        @keyframes shine {
-            0% {
-                left: -100%;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
-            20% {
-                left: 200%;
-            }
-            100% {
-                left: 200%;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
@@ -204,97 +233,116 @@
 <body>
     <header>
         <div class="container">
-            <div class="logo">🚀 FutureFood Express</div>
+            <div class="logo">Druga Dimenzija</div>
+            <div class="sublogo">FAST FOOD & GRILL</div>
         </div>
     </header>
 
     <div class="container">
-        <nav class="category-nav">
-            <button class="category-btn active">All</button>
-            <button class="category-btn">Burgers</button>
-            <button class="category-btn">Kebabs</button>
-            <button class="category-btn">Fries</button>
-            <button class="category-btn">Drinks</button>
-            <button class="category-btn">Desserts</button>
-        </nav>
+        <div class="nav-container">
+            <nav class="category-nav">
+                <button class="category-btn active" data-category="all">All</button>
+                <button class="category-btn" data-category="burgers">Beef Burgers</button>
+                <button class="category-btn" data-category="chicken">Chicken</button>
+                <button class="category-btn" data-category="kebab">Kebab</button>
+                <button class="category-btn" data-category="sides">Sides</button>
+                <button class="category-btn" data-category="drinks">Drinks</button>
+            </nav>
+        </div>
 
         <section class="menu-section">
-            <h2 class="category-title">Burgers</h2>
-            <div class="menu-grid">
-                <div class="food-card">
-                    <div class="shine"></div>
-                    <img src="/api/placeholder/280/200" alt="Classic Burger" class="food-image">
-                    <h3 class="food-title">Quantum Burger</h3>
-                    <p class="food-description">Angus beef patty, quantum lettuce, temporal tomatoes, and our secret space sauce</p>
-                    <span class="food-price">$12.99</span>
-                    <button class="order-btn">Order Now</button>
-                </div>
+            <div id="burgers" class="menu-category">
+                <h2 class="category-title">Beef Burgers</h2>
+                <div class="menu-grid">
+                    <div class="food-card" data-category="burgers">
+                        <img src="/api/placeholder/300/200" alt="Classic Burger" class="food-image">
+                        <div class="food-content">
+                            <h3 class="food-title">Classic Beef Burger</h3>
+                            <p class="food-description">100% beef patty, fresh lettuce, tomato, onion, and our special sauce</p>
+                            <div class="food-footer">
+                                <span class="food-price">5.99 €</span>
+                                <button class="order-btn">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="food-card">
-                    <div class="shine"></div>
-                    <img src="/api/placeholder/280/200" alt="Cheese Burger" class="food-image">
-                    <h3 class="food-title">Galaxy Cheeseburger</h3>
-                    <p class="food-description">Double cheese, caramelized onions, stellar bacon, and meteor sauce</p>
-                    <span class="food-price">$14.99</span>
-                    <button class="order-btn">Order Now</button>
-                </div>
-            </div>
-
-            <h2 class="category-title">Kebabs</h2>
-            <div class="menu-grid">
-                <div class="food-card">
-                    <div class="shine"></div>
-                    <img src="/api/placeholder/280/200" alt="Classic Kebab" class="food-image">
-                    <h3 class="food-title">Nebula Kebab</h3>
-                    <p class="food-description">Marinated lamb, cosmic vegetables, and stardust sauce</p>
-                    <span class="food-price">$16.99</span>
-                    <button class="order-btn">Order Now</button>
-                </div>
-
-                <div class="food-card">
-                    <div class="shine"></div>
-                    <img src="/api/placeholder/280/200" alt="Chicken Kebab" class="food-image">
-                    <h3 class="food-title">Stellar Chicken Kebab</h3>
-                    <p class="food-description">Grilled chicken, aurora vegetables, and meteor sauce</p>
-                    <span class="food-price">$15.99</span>
-                    <button class="order-btn">Order Now</button>
+                    <div class="food-card" data-category="burgers">
+                        <img src="/api/placeholder/300/200" alt="Cheese Burger" class="food-image">
+                        <div class="food-content">
+                            <h3 class="food-title">Double Cheeseburger</h3>
+                            <p class="food-description">Two beef patties, double cheese, bacon, caramelized onions</p>
+                            <div class="food-footer">
+                                <span class="food-price">7.99 €</span>
+                                <button class="order-btn">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <h2 class="category-title">Drinks</h2>
-            <div class="menu-grid">
-                <div class="food-card">
-                    <div class="shine"></div>
-                    <img src="/api/placeholder/280/200" alt="Cosmic Cola" class="food-image">
-                    <h3 class="food-title">Cosmic Cola</h3>
-                    <p class="food-description">Our signature cola with floating star crystals</p>
-                    <span class="food-price">$3.99</span>
-                    <button class="order-btn">Order Now</button>
+            <div id="kebab" class="menu-category">
+                <h2 class="category-title">Kebab</h2>
+                <div class="menu-grid">
+                    <div class="food-card" data-category="kebab">
+                        <img src="/api/placeholder/300/200" alt="Doner Kebab" class="food-image">
+                        <div class="food-content">
+                            <h3 class="food-title">Döner Kebab</h3>
+                            <p class="food-description">Fresh pita bread, seasoned meat, vegetables, and garlic sauce</p>
+                            <div class="food-footer">
+                                <span class="food-price">6.99 €</span>
+                                <button class="order-btn">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
 
-                <div class="food-card">
-                    <div class="shine"></div>
-                    <img src="/api/placeholder/280/200" alt="Meteor Shake" class="food-image">
-                    <h3 class="food-title">Meteor Shake</h3>
-                    <p class="food-description">Creamy milkshake with cosmic dust sprinkles</p>
-                    <span class="food-price">$5.99</span>
-                    <button class="order-btn">Order Now</button>
+            <div id="sides" class="menu-category">
+                <h2 class="category-title">Sides</h2>
+                <div class="menu-grid">
+                    <div class="food-card" data-category="sides">
+                        <img src="/api/placeholder/300/200" alt="French Fries" class="food-image">
+                        <div class="food-content">
+                            <h3 class="food-title">French Fries</h3>
+                            <p class="food-description">Crispy golden fries with your choice of seasoning</p>
+                            <div class="food-footer">
+                                <span class="food-price">2.99 €</span>
+                                <button class="order-btn">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </div>
 
     <script>
-        // Add click handlers for category buttons
-        const categoryButtons = document.querySelectorAll('.category-btn');
-        
-        categoryButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                categoryButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
-                button.classList.add('active');
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const menuCategories = document.querySelectorAll('.menu-category');
+
+            function filterItems(category) {
+                menuCategories.forEach(menuCategory => {
+                    if (category === 'all') {
+                        menuCategory.classList.remove('hidden');
+                    } else if (!menuCategory.querySelector(`[data-category="${category}"]`)) {
+                        menuCategory.classList.add('hidden');
+                    } else {
+                        menuCategory.classList.remove('hidden');
+                    }
+                });
+            }
+
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    const category = button.getAttribute('data-category');
+                    filterItems(category);
+                });
             });
+
+            filterItems('all');
         });
     </script>
 </body>
