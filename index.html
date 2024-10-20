@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Druga Dimenzija</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #2d2d2d;
+            --accent: #9D00FF;
+            --text: #ffffff;
+            --card-bg: #2d2d2d;
+            --hover: #ff6b6b;
+        }
+
+        body {
+            background: var(--primary);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--secondary);
+            padding: 0.5rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 0rem;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            color: var(--text);
+            margin-bottom: 0;
+        }
+		
+		.logo img {
+                height: 11vh;
+		}
+		
+		.shine {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.3) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            animation: shine 3s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shine {
+            from {
+                left: -100%;
+            }
+            to {
+                left: 200%;
+            }
+        }
+
+
+        .sublogo {
+			text-align: center;
+            color: var(--accent);
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+			padding-top = 0;
+			margin-top = 0;
+        }
+
+        .nav-container {
+            background: var(--secondary);
+            padding: 1rem 0;
+            margin-top: 2rem;
+            border-radius: 10px;
+        }
+
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--text);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .category-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .category-btn.active {
+            background: var(--accent);
+            box-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
+        }
+
+        .menu-section {
+            padding: 2rem 0;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            margin: 2rem 0;
+            color: var(--accent);
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .category-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 70%;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 1rem 0;
+        }
+
+        .food-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .food-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .food-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .food-content {
+            padding: 1.5rem;
+        }
+
+        .food-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .food-description {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            min-height: 2.7rem;
+        }
+
+        .food-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .food-price {
+            font-size: 1.4rem;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .order-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .order-btn:hover {
+            background: var(--hover);
+            transform: scale(1.05);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-nav {
+                padding: 0.5rem;
+            }
+
+            .category-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        .food-card {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+				<img src="./images/logo_picture.png" alt="Druga Dimenzija Logo" height = 50px/>
+				<img src="./images/logo_text.png" alt="Druga Dimenzija Text" />
+			</div>
+            <div class="sublogo">FAST FOOD & GRILL</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="nav-container">
+            <nav class="category-nav">
+                <button class="category-btn active" data-category="all">All</button>
+                <button class="category-btn" data-category="burgers">Beef Burgers</button>
+                <button class="category-btn" data-category="chicken">Chicken</button>
+                <button class="category-btn" data-category="kebab">Kebab</button>
+                <button class="category-btn" data-category="sides">Sides</button>
+                <button class="category-btn" data-category="drinks">Drinks</button>
+            </nav>
+        </div>
+
+        <section class="menu-section">
+            <div id="burgers" class="menu-category">
+                <h2 class="category-title">Burgeri</h2>
+                <div class="menu-grid">
+                    <div class="food-card" data-category="burgers">
+						<div class="shine"></div>
+                        <img src="./images/pljeskavica_sa_kajmakom.jpg" alt="Pljeskavica kajmak" class="food-image">
+                        <div class="food-content">
+                            <h3 class="food-title">Klasicna pljeka, al s kajmakom</h3>
+                            <p class="food-description">100% pljeka, 100% kajmak, 200% uzivancija</p>
+                            <div class="food-footer">
+                                <span class="food-price">Priceless</span>
+                                <button class="order-btn">Zabelezi obrok</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-card" data-category="burgers">
+						<div class="shine"></div>
+                        <img src="./images/pljeskavica.jpg" alt="Lil pljeka" class="food-image">
+                        <div class="food-content">
+                            <h3 class="food-title">Lil pljeka, da gricnes</h3>
+                            <p class="food-description">Ovo kad nisi pri kesu, isto 100% krava</p>
+                            <div class="food-footer">
+                                <span class="food-price">350 RSD</span>
+                                <button class="order-btn">Zabelezi obrok</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="kebab" class="menu-category">
+                <h2 class="category-title">Cevapce</h2>
+                <div class="menu-grid">
+                    <div class="food-card" data-category="kebab">
+						<div class="shine"></div>
+                        <img src="./images/cevapi.jpg" alt="cevapi" class="food-image">
+                        <div class="food-content">
+                            <h3 class="food-title">Cevapi, 10 x slatkisi malenisi</h3>
+                            <p class="food-description">100% moja kravica, samlevena u 100% tvoje cevapcice</p>
+                            <div class="food-footer">
+                                <span class="food-price">450 RSD</span>
+                                <button class="order-btn">Zabelezi obrok</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sides" class="menu-category">
+                <h2 class="category-title">Leba i ostali prilozi</h2>
+                <div class="menu-grid">
+                    <div class="food-card" data-category="sides">
+						<div class="shine"></div>
+                        <img src="./images/online_burger_bun.jpg" alt="Leba" class="food-image">
+                        <div class="food-content">
+                            <h3 class="food-title">Leba, nije domaci, al je mekan</h3>
+                            <p class="food-description">Ovo nije 100% krava :(</p>
+                            <div class="food-footer">
+                                <span class="food-price">30 RSD</span>
+                                <button class="order-btn">Zabelezi obrok</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const menuCategories = document.querySelectorAll('.menu-category');
+
+            function filterItems(category) {
+                menuCategories.forEach(menuCategory => {
+                    if (category === 'all') {
+                        menuCategory.classList.remove('hidden');
+                    } else if (!menuCategory.querySelector(`[data-category="${category}"]`)) {
+                        menuCategory.classList.add('hidden');
+                    } else {
+                        menuCategory.classList.remove('hidden');
+                    }
+                });
+            }
+
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    const category = button.getAttribute('data-category');
+                    filterItems(category);
+                });
+            });
+
+            filterItems('all');
+        });
+    </script>
+</body>
+</html>
