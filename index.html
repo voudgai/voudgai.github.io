@@ -363,6 +363,8 @@
                 <button class="category-btn" data-category="chicken">Pile</button>
                 <button class="category-btn" data-category="kebab">Svinjče</button>
 				<button class="category-btn" data-category="specijaliteti">Specijaliteti</button>
+				<button class="category-btn" data-category="dorucak">Doručak u lepinji</button>
+				<button class="category-btn" data-category="naKilo">Na kilo</button>
                 <button class="category-btn" data-category="slatkisi">Slatkiši</button>
                 <button class="category-btn" data-category="sides">Prilozi</button>
 				<button class="category-btn" data-category="drinks">Pića</button>
@@ -433,6 +435,36 @@
                                 <div>
 									<span class="food-price">5 kom: 230 RSD</span> <br>
 									<span class="food-price">10 kom: 400 RSD</span>
+                                </div>
+                                <button class="call-button" onclick="handleClick()">Pozovite odmah</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-card" data-category="burgers">
+						<div class="shine"></div>
+                        <img src="./images/logo_card.png" alt="2D pljeskavica" class="food-image">
+                        <div class="food-content">
+                            <h3 class="food-title">2D pljeskavica</h3>
+                            <p class="food-description">100% junetina, duvan čvarci i kačkavalj.</p>
+                            <div class="food-footer">
+                                <div>
+									<span class="food-price">550 RSD</span> <br>
+                                </div>
+                                <button class="call-button" onclick="handleClick()">Pozovite odmah</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-card" data-category="burgers">
+						<div class="shine"></div>
+                        <img src="./images/logo_card.png" alt="2D burger" class="food-image">
+                        <div class="food-content">
+                            <h3 class="food-title">2D burger</h3>
+                            <p class="food-description">2 x 100g mesa, 2 x čedar, slanina, kiseli krastavac, zelena salata i burger sos.</p>
+                            <div class="food-footer">
+                                <div>
+									<span class="food-price">600 RSD</span> <br>
                                 </div>
                                 <button class="call-button" onclick="handleClick()">Pozovite odmah</button>
                             </div>
@@ -530,6 +562,46 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="food-card" data-category="chicken">
+						<div class="shine"></div>
+                        <img src="./images/logo_card.png" alt="Pohovani pileći file" class="food-image">
+                        <div class="food-content">
+                            <h3 class="food-title">Pohovani pileći file</h3>
+                            <p class="food-description"></p>
+                            <div class="food-footer">
+                                <span class="food-price">250g: 450 RSD</span>
+                                <button class="call-button" onclick="handleClick()">Pozovite odmah</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-card" data-category="chicken">
+						<div class="shine"></div>
+                        <img src="./images/logo_card.png" alt="Chicken nuggets" class="food-image">
+                        <div class="food-content">
+                            <h3 class="food-title">Chicken nuggets</h3>
+                            <p class="food-description"></p>
+                            <div class="food-footer">
+                                <span class="food-price">200g - 2 sosa: 250 RSD</span>
+                                <button class="call-button" onclick="handleClick()">Pozovite odmah</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-card" data-category="chicken">
+						<div class="shine"></div>
+                        <img src="./images/logo_card.png" alt="Chicken nuggets" class="food-image">
+                        
+                        <div class="food-content">
+                            <h3 class="food-title">Pileća karadjordjeva klasik</h3>
+                            <p class="food-description"></p>
+                            <div class="food-footer">
+                                <span class="food-price">300g: 350 RSD</span>
+                                <button class="call-button" onclick="handleClick()">Pozovite odmah</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 			
@@ -568,6 +640,192 @@
                 </div>
             </div>
 			
+            <div id="sides" class="menu-category">
+                <h2 class="category-title">Doručak u lepinji</h2>
+                <div class="menu-grid">
+                    <div class="food-card" data-category="dorucak">
+						<div class="shine"></div>
+                        <img src="./images/jaja_slanina.jpg" alt="jaja slanina" class="food-image">
+                        <div class="food-content">
+                            <h3 class="food-title">Kajgana od 3 jaja, slanina</h3>
+                            <p class="food-description"></p>
+                            <div class="food-footer">
+                                <span class="food-price">320 RSD</span> <br>
+                                <button class="call-button" onclick="handleClick()">Pozovite odmah</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-card" data-category="dorucak">
+						<div class="shine"></div>
+                        <img src="./images/jaja_kobasica.jpg" alt="jaja kobasica" class="food-image">
+                        <div class="food-content">
+                            <h3 class="food-title">Kajgana od 3 jaja, kobasica</h3>
+                            <p class="food-description"></p>
+                            <div class="food-footer">
+                                <span class="food-price">320 RSD</span> <br>
+                                <button class="call-button" onclick="handleClick()">Pozovite odmah</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-card" data-category="dorucak">
+						<div class="shine"></div>
+                        <img src="./images/2D dorucak.jpg" alt="2D dorucak" class="food-image">
+                        <div class="food-content">
+                            <h3 class="food-title">2D doručak</h3>
+                            <p class="food-description">3 jaja, slanina, kobasica, duvan čvarci.</p>
+                            <div class="food-footer">
+                                <span class="food-price">380 RSD</span> <br>
+                                <button class="call-button" onclick="handleClick()">Pozovite odmah</button>
+                            </div>
+                        </div>
+                    </div>
+					
+                    <div class="food-card" data-category="dorucak">
+						<div class="shine"></div>
+                        <img src="./images/logo_card.png" alt="jaja kackavalj" class="food-image">
+                        <div class="food-content">
+                            <h3 class="food-title">Kajgana od 3 jaja, kačkavalj</h3>
+                            <p class="food-description"></p>
+                            <div class="food-footer">
+                                <span class="food-price">270 RSD</span> <br>
+                                <button class="call-button" onclick="handleClick()">Pozovite odmah</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-card" data-category="dorucak">
+						<div class="shine"></div>
+                        <img src="./images/logo_card.png" alt="jaja sunka" class="food-image">
+                        <div class="food-content">
+                            <h3 class="food-title">Kajgana od 3 jaja, šunka</h3>
+                            <p class="food-description"></p>
+                            <div class="food-footer">
+                                <span class="food-price">290 RSD</span> <br>
+                                <button class="call-button" onclick="handleClick()">Pozovite odmah</button>
+                            </div>
+                        </div>
+                    </div>
+					
+					<div class="food-card" data-category="specijaliteti">
+						<div class="shine"></div>
+                        <img src="./images/logo_card.png" alt="punjene przenice" class="food-image">
+                        <div class="food-content">
+                            <h3 class="food-title">Punjene prženice</h3>
+                            <p class="food-description">Pečenica, pavlaka, kečap, čedar sir.</p>
+                            <div class="food-footer">
+                                <span class="food-price">350 RSD</span>
+                                <button class="call-button" onclick="handleClick()">Pozovite odmah</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="kebab" class="menu-category">
+                <h2 class="category-title">Na kilo</h2>
+                             
+				<div class="menu-grid">
+                    <div class="food-card" data-category="naKilo">
+						<div class="shine"></div>
+                        <div class="food-content">
+                            <h3 class="food-title">Ćevapi/pljeskavice</h3>
+                            <p class="food-description"></p>
+                            <div class="food-footer">
+                                <span class="food-price">1800 RSD</span>
+                                <button class="call-button" onclick="handleClick()">Pozovite odmah</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-card" data-category="naKilo">
+						<div class="shine"></div>
+                        <div class="food-content">
+                            <h3 class="food-title">Pileći file</h3>
+                            <p class="food-description"></p>
+                            <div class="food-footer">
+                                <span class="food-price">1300 RSD</span>
+                                <button class="call-button" onclick="handleClick()">Pozovite odmah</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-card" data-category="naKilo">
+						<div class="shine"></div>
+                        <div class="food-content">
+                            <h3 class="food-title">Pileći batak</h3>
+                            <p class="food-description"></p>
+                            <div class="food-footer">
+                                <span class="food-price">1800 RSD</span>
+                                <button class="call-button" onclick="handleClick()">Pozovite odmah</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-card" data-category="naKilo">
+						<div class="shine"></div>
+                        <div class="food-content">
+                            <h3 class="food-title">Roštiljska kobasica</h3>
+                            <p class="food-description"></p>
+                            <div class="food-footer">
+                                <span class="food-price">1800 RSD</span>
+                                <button class="call-button" onclick="handleClick()">Pozovite odmah</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-card" data-category="naKilo">
+						<div class="shine"></div>
+                        <div class="food-content">
+                            <h3 class="food-title">Svinjske šnicle</h3>
+                            <p class="food-description"></p>
+                            <div class="food-footer">
+                                <span class="food-price">1800 RSD</span>
+                                <button class="call-button" onclick="handleClick()">Pozovite odmah</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-card" data-category="naKilo">
+						<div class="shine"></div>
+                        <div class="food-content">
+                            <h3 class="food-title">Mešano meso 1</h3>
+                            <p class="food-description">Ćevapi, pileći file, pileći batak, roštiljska kobasica, svinjska šnicla</p>
+                            <div class="food-footer">
+                                <span class="food-price">1520 RSD</span>
+                                <button class="call-button" onclick="handleClick()">Pozovite odmah</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-card" data-category="naKilo">
+						<div class="shine"></div>
+                        <div class="food-content">
+                            <h3 class="food-title">Mešano meso 2</h3>
+                            <p class="food-description">400g ćevapa, pileći file ili pileći batak, roštiljska kobasica, svinjska šnicla</p>
+                            <div class="food-footer">
+                                <span class="food-price">1620 RSD</span>
+                                <button class="call-button" onclick="handleClick()">Pozovite odmah</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-card" data-category="naKilo">
+						<div class="shine"></div>
+                        <div class="food-content">
+                            <h3 class="food-title">Mešano meso 3</h3>
+                            <p class="food-description">400g ćevapa, pileći file, pileći batak, svinjska šnicla</p>
+                            <div class="food-footer">
+                                <span class="food-price">1520 RSD</span>
+                                <button class="call-button" onclick="handleClick()">Pozovite odmah</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
 			<div id="sides" class="menu-category">
                 <h2 class="category-title">Slatkiši</h2>
                 <div class="menu-grid">
@@ -588,8 +846,7 @@
                     </div>
 				</div>
             </div>
-			
-			
+
             <div id="sides" class="menu-category">
                 <h2 class="category-title">Prilozi</h2>
                 <div class="menu-grid">
@@ -607,6 +864,38 @@
                         </div>
                     </div>
 				
+                    <div class="food-card" data-category="sides">
+						<div class="shine"></div>
+                        <img src="./images/pomfrit.jpg" alt="pomfrit" class="food-image">
+                        <div class="food-content">
+                            <h3 class="food-title">Pomfrit</h3>
+                            <p class="food-description"></p>
+                            <div class="food-footer">
+                                <div>
+									<span class="food-price">200g: 200 RSD</span> <br>
+									<span class="food-price">400g: 350 RSD</span> <br>
+                                </div>
+                                <button class="call-button" onclick="handleClick()">Pozovite odmah</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-card" data-category="sides">
+						<div class="shine"></div>
+                        <img src="./images/logo_card.png" alt="pekarski" class="food-image">
+                        <div class="food-content">
+                            <h3 class="food-title">Pekarski krompir</h3>
+                            <p class="food-description"></p>
+                            <div class="food-footer">
+                                <div>
+									<span class="food-price">200g: 250 RSD</span> <br>
+									<span class="food-price">400g: 4000 RSD</span> <br>
+                                </div>
+                                <button class="call-button" onclick="handleClick()">Pozovite odmah</button>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="food-card" data-category="sides">
 						<div class="shine"></div>
                         <img src="./images/online_burger_bun.jpg" alt="Leba" class="food-image">
